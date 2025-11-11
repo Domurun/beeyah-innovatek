@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beeyah InnovaTek | Don’t just live life, Tek It.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles using the defined fonts */
+        body { font-family: 'Open Sans', sans-serif; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        /* Style for the active navigation link */
+        .nav-link-active {
+            color: #3498DB; /* accent color */
+            font-weight: 700;
+        }
+        /* Style for the active filter button */
+        .filter-btn-active {
+            background-color: #3498DB; /* accent */
+            color: white;
+        }
+        /* Simple accordion styles */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] > summary .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* SVG gradient stop classes (moved from inline styles) */
+        .stop-grad1-start { stop-color: #3498DB; stop-opacity: 1; }
+        .stop-grad1-end   { stop-color: #34495E; stop-opacity: 1; }
+    </style>
+    <script>
+        // Tailwind Configuration for Brand Colors and Fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Primary Color: Charcoal Gray
+                        primary: '#34495E',
+                        // Secondary/Accent Color: Light Blue
+                        accent: '#3498DB',
+                    },
+                    fontFamily: {
+                        // Headings: Montserrat
+                        heading: ['Montserrat', 'sans-serif'],
+                        // Body Text: Open Sans
+                        sans: ['Open Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-primary selection:bg-accent selection:text-white">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo (Using the uploaded PNG image) -->
+            <a href="#" id="nav-home-logo" class="flex items-center">
+                <img src="/assets/img/BEEYAH.png" alt="Beeyah InnovaTek Logo" class="h-8 md:h-10 w-auto">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 font-heading text-sm font-semibold" id="desktop-nav">
+                <!-- Links updated with IDs for JS navigation -->
+                <a href="#" id="nav-services" class="hover:text-accent transition duration-200">Services</a>
+                <a href="#" id="nav-portfolio" class="hover:text-accent transition duration-200">Portfolio</a>
+                <a href="#" id="nav-about-us" class="hover:text-accent transition duration-200">About</a>
+                <a href="#" id="nav-blog" class="hover:text-accent transition duration-200">Blog</a>
+                <a href="#contact-section" id="nav-contact" class="px-4 py-2 bg-accent text-white rounded-full shadow-lg hover:bg-opacity-90 transition duration-300">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button (Updated with ID) -->
+            <button id="mobile-menu-button" type="button" class="md:hidden text-primary hover:text-accent" aria-label="Open menu" title="Open menu">
+                <!-- Visually hidden text for screen readers -->
+                <span class="sr-only">Open menu</span>
+                <!-- Icon: Menu -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- =================================== -->
+    <!-- ===   MOBILE MENU               === -->
+    <!-- =================================== -->
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-50 hidden md:hidden"></div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white z-[60] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+            <!-- Close Button -->
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-heading font-bold text-primary">Navigation</span>
+                <button id="mobile-menu-close-button" class="text-primary hover:text-accent" aria-label="Close menu" title="Close menu">
+                    <span class="sr-only">Close menu</span>
+                    <!-- Icon: Close (X) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col space-y-5 font-heading text-lg font-semibold">
+                <a href="#" id="mobile-nav-services" class="hover:text-accent transition duration-200">Services</a>
+                <a href="#" id="mobile-nav-portfolio" class="hover:text-accent transition duration-200">Portfolio</a>
+                <a href="#" id="mobile-nav-about-us" class="hover:text-accent transition duration-200">About</a>
+                <a href="#" id="mobile-nav-blog" class="hover:text-accent transition duration-200">Blog</a>
+                <a href="#contact-section" id="mobile-nav-contact" class="mt-4 inline-block px-6 py-3 bg-accent text-white rounded-full text-center shadow-lg hover:bg-opacity-90 transition duration-300">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- =================================== -->
+    <!-- ===   HOME PAGE CONTENT (MAIN)  === -->
+    <!-- =================================== -->
+    <main id="page-home">
+        <!-- 1. Hero Section (First Impression) -->
+        <section class="relative pt-24 pb-32 bg-gray-50 overflow-hidden">
+            <!-- Visuals: Abstract SVG Wave (Replaced) -->
+            <div class="absolute inset-0 opacity-20 -z-10">
+                <svg viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path d="M0 560C0 560 205.286 423.823 423.823 376.177C642.36 328.53 720.714 464.707 925.714 464.707C1130.71 464.707 1228.57 328.53 1440 328.53V560H0Z" fill="url(#paint0_linear)"/>
+                    <path d="M0 560C0 560 205.286 368.683 423.823 321.037C642.36 273.39 720.714 409.567 925.714 409.567C1130.71 409.567 1228.57 273.39 1440 273.39V560H0Z" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="328.53" x2="1440" y2="328.53" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#34495E"/>
+                            <stop offset="1" stop-color="#3498DB"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="0" y1="273.39" x2="1440" y2="273.39" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3498DB"/>
+                            <stop offset="1" stop-color="#34495E" stop-opacity="0.5"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 text-primary leading-tight">
+                    Don’t just live life, <span class="text-accent">Tek It.</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+                    We design intelligent, scalable solutions for the digital age, powering your vision with innovative technology.
+                </p>
+
+                <!-- Calls to Action -->
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact-section" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full bg-accent text-white shadow-2xl shadow-accent/50 hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                        Let’s Build Something Smart
+                    </a>
+                    <!-- Updated to navigate with JS -->
+                    <a href="#" id="nav-portfolio-hero" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition duration-300">
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Value Proposition / What We Do -->
+        <section id="values" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-semibold text-center mb-12 text-primary">
+                    The Pillars of InnovaTek
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pillar 1: Innovative Development -->
+                    <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Zap -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Innovative Development</h3>
+                        <p class="text-gray-600 text-sm">Crafting bespoke, future-proof software and applications.</p>
+                    </div>
+
+                    <!-- Pillar 2: Scalable Cloud Solutions -->
+                    <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Cloud -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Scalable Cloud Solutions</h3>
+                        <p class="text-gray-600 text-sm">Building reliable infrastructure that grows with your business.</p>
+                    </div>
+
+                    <!-- Pillar 3: Creative Branding -->
+                    <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Pen Tool -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18.5 11.5l.5-.5"></path><path d="M18.5 11.5l-1.5-1.5"></path><path d="M18.5 11.5l-3.5-3.5"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Creative Branding</h3>
+                        <p class="text-gray-600 text-sm">Designing cohesive brand identities and user-centric design systems.</p>
+                    </div>
+
+                    <!-- Pillar 4: Tech Consultancy -->
+                    <div class="text-center p-6 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Lightbulb -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .2-2 0-3-.3-1.2-1.3-2.5-3-3s-3.5-.8-5-1a7 7 0 1 1 8 8c-1.5 0-3-.5-4.5-1.5"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Tech Consultancy</h3>
+                        <p class="text-gray-600 text-sm">Strategic guidance to navigate complex technology landscapes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. About Beeyah InnovaTek (Trust Section) -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="lg:order-2">
+                    <h2 class="font-heading text-4xl font-bold mb-4 text-primary">
+                        Your Vision, Our <span class="text-accent">Innovation.</span>
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                        At Beeyah InnovaTek, we don't just solve problems—we engineer progress. Our mission is to transform ambitious ideas into practical, high-impact digital realities. We believe in sustainable technology that drives real, measurable growth for our partners worldwide.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+                        <div class="p-4 bg-white rounded-lg shadow-md border-t-4 border-accent">
+                            <p class="text-3xl font-heading font-bold text-primary">20+</p>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Satisfied Clients</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-md border-t-4 border-accent">
+                            <p class="text-3xl font-heading font-bold text-primary">50+</p>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Projects Delivered</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow-md border-t-4 border-accent">
+                            <p class="text-3xl font-heading font-bold text-primary">3</p>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Countries Served</p>
+                        </div>
+                    </div>
+                    <!-- Link updated to navigate to About Us page -->
+                    <a href="#" id="home-about-learn-more" class="inline-flex items-center text-accent font-semibold hover:underline transition duration-300">
+                        Learn More About Our Mission
+                        <!-- Icon: Arrow Right -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" class="stop-grad1-start" />
+                                <stop offset="100%" class="stop-grad1-end" />
+                            </linearGradient>
+                        </defs>
+                                <stop offset="0%" class="stop-grad1-start" />
+                                <stop offset="100%" class="stop-grad1-end" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="30" fill="none" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="4 4"/>
+                        <circle cx="30" cy="30" r="5" fill="#3498DB"/>
+                        <circle cx="70" cy="30" r="5" fill="#3498DB"/>
+                        <circle cx="30" cy="70" r="5" fill="#3498DB"/>
+                        <circle cx="70" cy="70" r="5" fill="#3498DB"/>
+                        <circle cx="50" cy="50" r="5" fill="#34495E"/>
+                        <line x1="30" y1="30" x2="50" y2="50" stroke="#34495E" stroke-width="1"/>
+                        <line x1="70" y1="30" x2="50" y2="50" stroke="#34495E" stroke-width="1"/>
+                        <line x1="30" y1="70" x2="50" y2="50" stroke="#34495E" stroke-width="1"/>
+                        <line x1="70" y1="70" x2="50" y2="50" stroke="#34495E" stroke-width="1"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Featured Services -->
+        <section id="services" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-4 text-primary">
+                    Our Featured <span class="text-accent">Services</span>
+                </h2>
+                <p class="text-center text-lg text-gray-600 mb-12">
+                    Solutions engineered for efficiency, growth, and long-term success.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1: Web & App Development -->
+                    <div class="p-8 bg-white rounded-xl shadow-2xl border-t-4 border-accent hover:border-primary transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="font-heading text-2xl font-bold mb-3 text-primary">Web & App Development</h3>
+                        <p class="text-gray-600 mb-4">
+                            From high-traffic e-commerce platforms to scalable mobile applications, we build fast, robust digital experiences.
+                        </p>
+                        <!-- Updated to navigate with JS -->
+                        <a href="#" id="nav-services-explore-1" class="inline-flex items-center text-accent font-semibold hover:underline transition duration-300">
+                            Explore Development
+                        </a>
+                    </div>
+
+                    <!-- Service 2: Branding & Design Systems -->
+                    <div class="p-8 bg-white rounded-xl shadow-2xl border-t-4 border-accent hover:border-primary transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="font-heading text-2xl font-bold mb-3 text-primary">Branding & Design Systems</h3>
+                        <p class="text-gray-600 mb-4">
+                            Creating memorable brand identities and reusable design systems that ensure consistency and speed.
+                        </p>
+                        <!-- Updated to navigate with JS -->
+                        <a href="#" id="nav-services-explore-2" class="inline-flex items-center text-accent font-semibold hover:underline transition duration-300">
+                            Explore Branding
+                        </a>
+                    </div>
+
+                    <!-- Service 3: Cloud/DevOps Solutions -->
+                    <div class="p-8 bg-white rounded-xl shadow-2xl border-t-4 border-accent hover:border-primary transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="font-heading text-2xl font-bold mb-3 text-primary">Cloud/DevOps Solutions</h3>
+                        <p class="text-gray-600 mb-4">
+                            Implementing modern DevOps practices and cloud infrastructure (AWS, Azure, GCP) for maximum efficiency and security.
+                        </p>
+                        <!-- Updated to navigate with JS -->
+                        <a href="#" id="nav-services-explore-3" class="inline-flex items-center text-accent font-semibold hover:underline transition duration-300">
+                            Explore Cloud Solutions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Showcase / Portfolio Highlights -->
+        <section id="portfolio" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-12 text-primary">
+                    Our Latest <span class="text-accent">Success Stories</span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 Placeholder (Replaced) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Project+1" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">FinTech Platform Redesign</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Finance Startup | Category: System Design</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 Placeholder (Replaced) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Project+2" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">Global E-commerce Mobile App</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Retail Brand | Category: Web & App</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 3 Placeholder (Replaced) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Project+3" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">New Brand Identity & Guidelines</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: SaaS Company | Category: Branding</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <!-- Updated to navigate with JS -->
+                    <a href="#" id="nav-portfolio-cta" class="inline-flex items-center px-6 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition duration-300">
+                        See All 50+ Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Featured Insight (Blog / Thought Leadership) -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-12 text-primary">
+                    Featured <span class="text-accent">Insight</span>
+                </h2>
+
+                <div class="bg-white border rounded-xl shadow-lg p-6 md:p-10 lg:p-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10">
+                    <div class="flex-shrink-0 text-accent">
+                        <!-- Icon: Book Open -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase font-semibold mb-2">Technology & Sustainability</p>
+                        <h3 class="font-heading text-2xl font-bold mb-3 text-primary hover:text-accent transition duration-300 cursor-pointer">
+                            How Sustainable Tech is Changing the Digital Landscape in Africa
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Explore the rapid adoption of green technology and circular economy principles in high-growth African markets, and what it means for global development.
+                        </p>
+                        <!-- Link updated to navigate to Blog page -->
+                        <a href="#" id="home-insight-read-more" class="text-accent font-semibold hover:underline">Read the Full Article</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Call-to-Action Section (Final Lead Conversion) -->
+        <section class="py-24 bg-primary/95">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Ready to Build Smarter Solutions?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Our team is ready to engineer the technology that defines your next chapter.
+                </p>
+                <!-- This button now links to the new, detailed contact section below -->
+                <a href="#contact-section" class="inline-flex items-center justify-center px-10 py-4 text-xl font-semibold rounded-full bg-accent text-white shadow-2xl shadow-accent/50 hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    Let’s Talk
+                </a>
+            </div>
+        </section>
+
+        <!-- 8. Dedicated Contact Form Section -->
+        <section id="contact-section" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-heading font-bold text-primary mb-3">
+                        Start Your <span class="text-accent">Project</span>
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Tell us about your challenge and we'll get back to you within one business day.
+                    </p>
+                </div>
+
+                <form id="contactForm" class="bg-white p-8 md:p-12 rounded-xl shadow-2xl border-t-4 border-accent">
+                    <!-- Form Fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-primary mb-2">Full Name*</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-primary mb-2">Work Email*</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="company" class="block text-sm font-medium text-primary mb-2">Company / Organization</label>
+                        <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent">
+                    </div>
+                    <div class="mb-6">
+                        <label for="service" class="block text-sm font-medium text-primary mb-2">Interested Service</label>
+                        <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent appearance-none bg-white">
+                            <option value="">Select a service area...</option>
+                            <option value="Web & App Development">Web & App Development</option>
+                            <option value="Branding & Design Systems">Branding & Design Systems</option>
+                            <option value="Cloud/DevOps Solutions">Cloud/DevOps Solutions</option>
+                            <option value="General Consultancy">General Consultancy</option>
+                        </select>
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium text-primary mb-2">Project Details*</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"></textarea>
+                    </div>
+
+                    <!-- Submission Button -->
+                    <button type="submit" id="submitButton" class="w-full px-6 py-3 text-lg font-semibold rounded-full bg-primary text-white shadow-xl hover:bg-opacity-90 transition duration-300">
+                        Send My Inquiry
+                    </button>
+                    
+                    <!-- Form Status Message Box -->
+                    <div id="formStatus" class="mt-6 p-4 text-center rounded-lg hidden" role="status"></div>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- 9. Newsletter / Subscription (Moved down one spot) -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="font-heading text-3xl font-bold text-primary mb-3">
+                    Stay Ahead of the Curve
+                </h3>
+                <p class="text-gray-600 mb-6">
+                    Get smart insights and Beeyah updates straight to your inbox.
+                </p>
+                <form id="newsletterForm" class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" class="flex-grow px-5 py-3 border border-gray-300 rounded-full focus:ring-accent focus:border-accent" required>
+                    <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition duration-300">
+                        Subscribe
+                    </button>
+                    <div id="newsletterStatus" class="sm:absolute mt-16 sm:mt-0 sm:ml-4 p-2 text-center rounded-lg hidden w-full sm:w-auto" role="status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- ======================================= -->
+    <!-- ===   PORTFOLIO PAGE CONTENT        === -->
+    <!-- ======================================= -->
+    <main id="page-portfolio" class="hidden">
+        
+        <!-- 1. Portfolio Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Our <span class="text-accent">Work</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We transform ambitious ideas into digital realities. Explore our case studies to see how we've helped clients like you achieve success.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Portfolio Filters & Grid -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Filter Buttons (UPDATED with data-filter and ID) -->
+                <div id="portfolio-filters" class="flex justify-center flex-wrap gap-3 mb-12">
+                    <button data-filter="all" class="px-5 py-2 text-sm font-semibold rounded-full filter-btn-active transition duration-300">All Projects</button>
+                    <button data-filter="web-app" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Web & App</button>
+                    <button data-filter="branding" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Branding</button>
+                    <button data-filter="cloud" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Cloud/DevOps</button>
+                    <button data-filter="system-design" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">System Design</button>
+                </div>
+
+                <!-- Expanded Project Grid (UPDATED with ID and data-category) -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 (Replaced) -->
+                    <div data-category="system-design" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Project+1" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">FinTech Platform Redesign</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Finance Startup | Category: System Design</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 2 (Replaced) -->
+                    <div data-category="web-app" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Project+2" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">Global E-commerce Mobile App</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Retail Brand | Category: Web & App</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 3 (Replaced) -->
+                    <div data-category="branding" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Project+3" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">New Brand Identity & Guidelines</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: SaaS Company | Category: Branding</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 4 (Replaced) -->
+                    <div data-category="web-app" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Project+4" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">AI-Powered Logistics Dashboard</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Supply Chain Co. | Category: Web & App</d>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 5 (Replaced) -->
+                    <div data-category="cloud" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Project+5" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">Cloud Migration (AWS)</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Healthcare Provider | Category: Cloud/DevOps</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project 6 (Replaced) -->
+                    <div data-category="branding" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Project+6" alt="Project Thumbnail" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-semibold mb-1 text-primary group-hover:text-accent transition duration-300">Sustainable Packaging Rebrand</h3>
+                            <p class="text-sm text-gray-500 mb-3">Client: Eco Goods | Category: Branding</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination (Placeholder) -->
+                <div class="flex justify-center mt-16 space-x-2">
+                    <span class="px-4 py-2 rounded-full bg-accent text-white font-semibold">1</span>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">2</a>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">3</a>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">→</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CTA Section (Re-used from Home Page) -->
+        <section class="py-24 bg-primary/95">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Ready to Start Your Project?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Let's turn your idea into our next success story.
+                </p>
+                <!-- This button navigates back to the home page contact form -->
+                <a href="#" id="nav-contact-portfolio" class="inline-flex items-center justify-center px-10 py-4 text-xl font-semibold rounded-full bg-accent text-white shadow-2xl shadow-accent/50 hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    Let’s Talk
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- ======================================= -->
+    <!-- ===   SERVICES PAGE CONTENT         === -->
+    <!-- ======================================= -->
+    <main id="page-services" class="hidden">
+        <!-- 1. Services Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Our <span class="text-accent">Solutions</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We provide end-to-end technology solutions designed for performance, scalability, and impact.
+                </p>
+            </div>
+        </section>
+        
+        <!-- 2. Our Process Section -->
+        <section class="py-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-semibold text-center mb-12 text-primary">
+                    Our Approach to <span class="text-accent">Success</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                    <!-- Step 1: Discover -->
+                    <div class="p-6">
+                        <div class="text-accent mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-3xl font-heading font-bold">1</div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Discover</h3>
+                        <p class="text-gray-600 text-sm">We start by deeply understanding your goals, challenges, and audience.</p>
+                    </div>
+                    <!-- Step 2: Design -->
+                    <div class="p-6">
+                        <div class="text-accent mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-3xl font-heading font-bold">2</div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Design</h3>
+                        <p class="text-gray-600 text-sm">We create human-centric wireframes, prototypes, and design systems.</p>
+                    </div>
+                    <!-- Step 3: Develop -->
+                    <div class="p-6">
+                        <div class="text-accent mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-3xl font-heading font-bold">3</div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Develop</h3>
+                        <p class="text-gray-600 text-sm">Our engineers build clean, scalable, and secure code based on the approved design.</p>
+                    </div>
+                    <!-- Step 4: Deploy -->
+                    <div class="p-6">
+                        <div class="text-accent mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-3xl font-heading font-bold">4</div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Deploy</h3>
+                        <p class="text-gray-600 text-sm">We manage the launch process and provide ongoing support for growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Detailed Services Breakdown -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+                <!-- Service 1: Web & App Development (Replaced) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="flex justify-center items-center h-full">
+                        <img src="https://placehold.co/500x300/34495E/FFFFFF?text=Dev+Diagram" alt="Development Diagram" class="w-full max-w-sm h-64 rounded-xl object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-3xl font-bold mb-4 text-primary">Web & App Development</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            We build high-performance digital products that work seamlessly on all devices. From complex backend logic to pixel-perfect frontend interfaces, our team delivers robust and scalable solutions.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom Web & Mobile Applications</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>E-commerce & SaaS Platforms</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>API Development & Integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2: Branding & Design Systems (Replaced) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="md:order-2 flex justify-center items-center h-full">
+                        <img src="https://placehold.co/500x300/3498DB/FFFFFF?text=Design+System" alt="Design System UI" class="w-full max-w-sm h-64 rounded-xl object-cover">
+                    </div>
+                    <div class="md:order-1">
+                        <h3 class="font-heading text-3xl font-bold mb-4 text-primary">Branding & Design Systems</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            A strong brand is more than a logo. We create comprehensive brand identities and scalable design systems that ensure consistency across all your products and marketing channels.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>Brand Strategy & Identity Design</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>UI/UX Design & Prototyping</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>Reusable Component Libraries</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 3: Cloud/DevOps Solutions (Replaced) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="flex justify-center items-center h-full">
+                        <img src="https://placehold.co/500x300/34495E/FFFFFF?text=Cloud+Infra" alt="Cloud Infrastructure" class="w-full max-w-sm h-64 rounded-xl object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-3xl font-bold mb-4 text-primary">Cloud/DevOps Solutions</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Maximize efficiency, scalability, and security with our modern cloud and DevOps practices. We help you automate your infrastructure, streamline deployments, and reduce operational overhead.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>Cloud Architecture (AWS, Azure, GCP)</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>CI/CD & Automation Pipelines</li>
+                            <li class="flex items-center text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-accent"><polyline points="20 6 9 17 4 12"></polyline></svg>Security & Compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. CTA Section (Re-used) -->
+        <section class="py-24 bg-primary/95">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Have a Challenge for Us?
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Let's discuss how our solutions can be tailored to your exact needs.
+                </p>
+                <!-- This button navigates back to the home page contact form -->
+                <a href="#" id="nav-contact-services" class="inline-flex items-center justify-center px-10 py-4 text-xl font-semibold rounded-full bg-accent text-white shadow-2xl shadow-accent/50 hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    Let’s Talk
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================= -->
+    <!-- ===   ABOUT US PAGE CONTENT         === -->
+    <!-- ======================================= -->
+    <main id="page-about-us" class="hidden">
+        
+        <!-- 1. About Us Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Your Vision, Our <span class="text-accent">Innovation.</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We are a global team of engineers, designers, and strategists dedicated to building the future of digital technology, today.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Mission & Vision -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="font-heading text-3xl font-bold text-primary mb-4">Our Mission</h2>
+                    <p class="text-lg text-gray-700">
+                        To transform ambitious ideas into practical, high-impact digital realities. We engineer progress by creating intelligent, sustainable technology that drives real, measurable growth for our partners worldwide. We are committed to solving complex challenges with elegant solutions.
+                    </p>
+                </div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold text-primary mb-4">Our Vision</h2>
+                    <p class="text-lg text-gray-700">
+                        To be a leading force in global technology innovation, recognized for our human-centric approach, sustainable practices, and unwavering commitment to excellence. We envision a future where technology empowers every organization to achieve its full potential.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Values (Pillars) -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-semibold text-center mb-12 text-primary">
+                    Our Core <span class="text-accent">Values</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Value 1: Innovation -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Zap -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Innovation</h3>
+                        <p class="text-gray-600 text-sm">We are driven by curiosity and a desire to build what's next.</p>
+                    </div>
+                    <!-- Value 2: Partnership -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Users -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Partnership</h3>
+                        <p class="text-gray-600 text-sm">Your success is our success. We build lasting, transparent relationships.</p>
+                    </div>
+                    <!-- Value 3: Integrity -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Shield -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Integrity</h3>
+                        <p class="text-gray-600 text-sm">We operate with honesty and hold ourselves to the highest standards.</p>
+                    </div>
+                    <!-- Value 4: Sustainability -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <!-- Icon: Leaf -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 10.2c.1-.6.1-1.2.1-1.8 0-4.4-3.6-8-8-8s-8 3.6-8 8c0 .6 0 1.2.1 1.8.1.5.1.9.2 1.4.1.5.2 1 .3 1.5.2.7.4 1.3.7 1.9.3.6.7 1.2 1.1 1.7.5.6 1.1 1.1 1.7 1.5.6.4 1.2.7 1.9.9.5.1.9.2 1.4.3.5.1 1 .1 1.5.2.6.1 1.2.1 1.8.1s1.2-.1 1.8-.1c.5 0 1-.1 1.5-.2.5-.1 1-.2 1.5-.3.7-.2 1.3-.4 1.9-.7.6-.3 1.2-.7 1.7-1.1.6-.5 1.1-1.1 1.5-1.7.4-.6.7-1.2.9-1.9.1-.5.2-.9.3-1.5.1-.5.1-1 .2-1.4zM8 12c0-2.2 1.8-4 4-4s4 1.8 4 4c0 1.5-.8 2.8-2 3.5V18c0 .6-.4 1-1 1h-2c-.6 0-1-.4-1-1v-2.5c-1.2-.7-2-2-2-3.5z"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Sustainability</h3>
+                        <p class="text-gray-600 text-sm">We build for the long term, considering our impact on the planet and community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Meet the Team (Replaced) -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-12 text-primary">
+                    Meet Our <span class="text-accent">Leadership</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/34495E/FFFFFF?text=Photo" alt="Team Member Photo" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                        <h3 class="font-heading text-xl font-semibold text-primary">Full Name</h3>
+                        <p class="text-gray-500">Chief Executive Officer</p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/3498DB/FFFFFF?text=Photo" alt="Team Member Photo" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                        <h3 class="font-heading text-xl font-semibold text-primary">Full Name</h3>
+                        <p class="text-gray-500">Chief Technology Officer</p>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/34495E/FFFFFF?text=Photo" alt="Team Member Photo" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                        <h3 class="font-heading text-xl font-semibold text-primary">Full Name</h3>
+                        <p class="text-gray-500">Head of Design</p>
+                    </div>
+                    <!-- Team Member 4 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/200x200/3498DB/FFFFFF?text=Photo" alt="Team Member Photo" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                        <h3 class="font-heading text-xl font-semibold text-primary">Full Name</h3>
+                        <p class="text-gray-500">Head of Cloud Solutions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CTA Section (Re-used) -->
+        <section class="py-24 bg-primary/95">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
+                    Join Our Mission
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    We're always looking for talented innovators. See our open positions.
+                </p>
+                <!-- Updated ID for careers navigation -->
+                <a href="#" id="about-cta-careers" class="inline-flex items-center justify-center px-10 py-4 text-xl font-semibold rounded-full bg-accent text-white shadow-2xl shadow-accent/50 hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                    View Careers
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================= -->
+    <!-- ===     BLOG PAGE CONTENT         === -->
+    <!-- ======================================= -->
+    <main id="page-blog" class="hidden">
+        
+        <!-- 1. Blog Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    InnovaTek <span class="text-accent">Insights</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Exploring the future of technology, design, and sustainable innovation.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Featured Post -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-12 text-primary">
+                    Featured <span class="text-accent">Article</span>
+                </h2>
+                <!-- Re-using the featured insight from homepage -->
+                <div class="bg-white border rounded-xl shadow-lg p-6 md:p-10 lg:p-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10">
+                    <div class="flex-shrink-0 text-accent">
+                        <!-- Icon: Book Open -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase font-semibold mb-2">Technology & Sustainability</p>
+                        <h3 class="font-heading text-3xl font-bold mb-3 text-primary hover:text-accent transition duration-300 cursor-pointer">
+                            How Sustainable Tech is Changing the Digital Landscape in Africa
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Explore the rapid adoption of green technology and circular economy principles in high-growth African markets, and what it means for global development.
+                        </p>
+                        <a href="#" class="text-accent font-semibold hover:underline">Read the Full Article</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Blog Filters & Grid -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Filter Buttons (UPDATED with data-filter and ID) -->
+                <div id="blog-filters" class="flex justify-center flex-wrap gap-3 mb-12">
+                    <button data-filter="all" class="px-5 py-2 text-sm font-semibold rounded-full filter-btn-active transition duration-300">All Posts</button>
+                    <button data-filter="technology" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Technology</button>
+                    <button data-filter="sustainability" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Sustainability</button>
+                    <button data-filter="design" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Design</button>
+                    <button data-filter="cloud" class="px-5 py-2 text-sm font-semibold rounded-full bg-gray-100 text-primary hover:bg-gray-200 transition duration-300">Cloud</button>
+                </div>
+
+                <!-- Blog Post Grid (UPDATED with ID and data-category) -->
+                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Post 1 (Replaced) -->
+                    <div data-category="design" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Insight+1" alt="Blog Post Image" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">Oct 28, 2025 | Design</p>
+                            <h3 class="font-heading text-xl font-semibold mb-3 text-primary group-hover:text-accent transition duration-300">The Rise of Human-Centric AI</h3>
+                            <p class="text-gray-600 text-sm mb-4">Beyond the hype, how can we design AI systems that genuinely improve the human experience?</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Post 2 (Replaced) -->
+                    <div data-category="cloud" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Insight+2" alt="Blog Post Image" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">Oct 15, 2025 | Cloud</p>
+                            <h3 class="font-heading text-xl font-semibold mb-3 text-primary group-hover:text-accent transition duration-300">Serverless vs. Containers: Choosing Right</h3>
+                            <p class="text-gray-600 text-sm mb-4">A practical guide to navigating the tradeoffs between serverless and container orchestration.</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Post 3 (Replaced) -->
+                    <div data-category="technology" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/3498DB/FFFFFF?text=Insight+3" alt="Blog Post Image" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">Oct 02, 2025 | Technology</p>
+                            <h3 class="font-heading text-xl font-semibold mb-3 text-primary group-hover:text-accent transition duration-300">The Core Principles of Scalable Systems</h3>
+                            <p class="text-gray-600 text-sm mb-4">Building for 10 million users is different than building for 1,000. Here's what you need to know.</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Post 4 (Replaced) -->
+                    <div data-category="sustainability" class="bg-white rounded-xl shadow-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/34495E/FFFFFF?text=Insight+4" alt="Blog Post Image" class="h-48 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">Sep 25, 2025 | Sustainability</p>
+                            <h3 class="font-heading text-xl font-semibold mb-3 text-primary group-hover:text-accent transition duration-300">Green Computing: The Future of DevOps</h3>
+                            <p class="text-gray-600 text-sm mb-4">How optimizing your infrastructure can reduce both your carbon footprint and your costs.</p>
+                            <a href="#" class="text-accent font-semibold text-sm hover:underline">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination (Placeholder) -->
+                <div class="flex justify-center mt-16 space-x-2">
+                    <span class="px-4 py-2 rounded-full bg-accent text-white font-semibold">1</span>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">2</a>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">3</a>
+                    <a href="#" class="px-4 py-2 rounded-full bg-gray-100 text-primary hover:bg-gray-200 font-semibold">→</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Newsletter Section (Re-used) -->
+        <section class="py-20">
+            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="font-heading text-3xl font-bold text-primary mb-3">
+                    Stay Ahead of the Curve
+                </h3>
+                <p class="text-gray-600 mb-6">
+                    Get smart insights and Beeyah updates straight to your inbox.
+                </p>
+                <!-- Note: This form ID is shared with the homepage, which is fine for this simulation -->
+                <form id="newsletterFormBlog" class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" id="newsletterEmailBlog" placeholder="Enter your email address" class="flex-grow px-5 py-3 border border-gray-300 rounded-full focus:ring-accent focus:border-accent" required>
+                    <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition duration-300">
+                        Subscribe
+                    </button>
+                    <!-- This ID should be unique, but will share logic with newsletterStatus -->
+                    <div id="newsletterStatusBlog" class="sm:absolute mt-16 sm:mt-0 sm:ml-4 p-2 text-center rounded-lg hidden w-full sm:w-auto" role="status"></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================= -->
+    <!-- ===   CAREERS PAGE CONTENT (NEW)    === -->
+    <!-- ======================================= -->
+    <main id="page-careers" class="hidden">
+        <!-- 1. Careers Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Build The <span class="text-accent">Future</span> With Us
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We're a team of passionate innovators. If you're driven by curiosity and a desire to build what's next, you're in the right place.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Why Work With Us -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-semibold text-center mb-12 text-primary">
+                    Life at <span class="text-accent">Beeyah InnovaTek</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Value 1 -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Global Collaboration</h3>
+                        <p class="text-gray-600 text-sm">Work with diverse, talented teams from around the world on challenging projects.</p>
+                    </div>
+                    <!-- Value 2 -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .2-2 0-3-.3-1.2-1.3-2.5-3-3s-3.5-.8-5-1a7 7 0 1 1 8 8c-1.5 0-3-.5-4.5-1.5"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Continuous Learning</h3>
+                        <p class="text-gray-600 text-sm">We invest in your growth with access to new technologies, courses, and certifications.</p>
+                    </div>
+                    <!-- Value 3 -->
+                    <div class="text-center p-6">
+                        <div class="text-accent mb-4 mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-accent/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 10.2c.1-.6.1-1.2.1-1.8 0-4.4-3.6-8-8-8s-8 3.6-8 8c0 .6 0 1.2.1 1.8.1.5.1.9.2 1.4.1.5.2 1 .3 1.5.2.7.4 1.3.7 1.9.3.6.7 1.2 1.1 1.7.5.6 1.1 1.1 1.7 1.5.6.4 1.2.7 1.9.9.5.1.9.2 1.4.3.5.1 1 .1 1.5.2.6.1 1.2.1 1.8.1s1.2-.1 1.8-.1c.5 0 1-.1 1.5-.2.5-.1 1-.2 1.5-.3.7-.2 1.3-.4 1.9-.7.6-.3 1.2-.7 1.7-1.1.6-.5 1.1-1.1 1.5-1.7.4-.6.7-1.2.9-1.9.1-.5.2-.9.3-1.5.1-.5.1-1 .2-1.4zM8 12c0-2.2 1.8-4 4-4s4 1.8 4 4c0 1.5-.8 2.8-2 3.5V18c0 .6-.4 1-1 1h-2c-.6 0-1-.4-1-1v-2.5c-1.2-.7-2-2-2-3.5z"></path></svg>
+                        </div>
+                        <h3 class="font-heading text-xl font-semibold mb-2 text-primary">Make an Impact</h3>
+                        <p class="text-gray-600 text-sm">Our work is focused on creating sustainable, meaningful, and innovative solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Open Positions -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-heading font-bold text-center mb-12 text-primary">
+                    Open <span class="text-accent">Positions</span>
+                </h2>
+                <div class="space-y-6">
+                    <!-- Position 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="font-heading text-xl font-semibold text-primary">Senior Frontend Engineer (React)</h3>
+                            <p class="text-gray-500 text-sm">Engineering | Remote (Global) | Full-Time</p>
+                        </div>
+                        <a href="#" class="mt-4 md:mt-0 px-5 py-2 text-sm font-semibold rounded-full bg-accent text-white hover:bg-opacity-90 transition duration-300">
+                            Apply Now
+                        </a>
+                    </div>
+                    <!-- Position 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="font-heading text-xl font-semibold text-primary">Lead Product Designer (UI/UX)</h3>
+                            <p class="text-gray-500 text-sm">Design | Lagos, Nigeria | Full-Time</p>
+                        </div>
+                        <a href="#" class="mt-4 md:mt-0 px-5 py-2 text-sm font-semibold rounded-full bg-accent text-white hover:bg-opacity-90 transition duration-300">
+                            Apply Now
+                        </a>
+                    </div>
+                    <!-- Position 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center">
+                        <div>
+                            <h3 class="font-heading text-xl font-semibold text-primary">Cloud Solutions Architect (AWS)</h3>
+                            <p class="text-gray-500 text-sm">Cloud & DevOps | Dallas, USA | Full-Time</p>
+                        </div>
+                        <a href="#" class="mt-4 md:mt-0 px-5 py-2 text-sm font-semibold rounded-full bg-accent text-white hover:bg-opacity-90 transition duration-300">
+                            Apply Now
+                        </a>
+                    </div>
+                    <!-- No positions notice -->
+                    <div class="text-center pt-8 text-gray-600">
+                        <p>Don't see a role for you? <a href="mailto:careers@beeyahinnovatek.com" class="text-accent hover:underline">Send us your resume!</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- ======================================= -->
+    <!-- ===   PRIVACY POLICY PAGE (NEW)     === -->
+    <!-- ======================================= -->
+    <main id="page-privacy" class="hidden">
+        <!-- 1. Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Privacy <span class="text-accent">Policy</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We are committed to protecting your privacy and handling your data transparently.
+                </p>
+            </div>
+        </section>
+        
+        <!-- 2. Legal Text Content -->
+        <section class="py-20">
+            <!-- Using Tailwind's 'prose' class for rich text styling -->
+            <div class="prose prose-lg max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-700">
+                <p class="text-gray-500">Last Updated: November 11, 2025</p>
+                
+                <h2>1. Introduction</h2>
+                <p>Welcome to Beeyah InnovaTek ("we," "our," or "us"). We are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+
+                <h2>2. Information We Collect</h2>
+                <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+                <ul>
+                    <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, email address, and telephone number, that you voluntarily give to us when you fill out a contact form.</li>
+                    <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site.</li>
+                </ul>
+
+                <h2>3. How We Use Your Information</h2>
+                <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
+                <ul>
+                    <li>Respond to your product and customer service requests.</li>
+                    <li>Email you regarding your account or order.</li>
+                    <li>Compile anonymous statistical data and analysis for use internally.</li>
+                    <li>Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.</li>
+                </ul>
+
+                <h2>4. Your Rights</h2>
+                <p>You have the right to request access to the personal data we hold about you, to request corrections, or to request deletion of your personal data. Please contact us at <a href="mailto:privacy@beeyahinnovatek.com" class="text-accent hover:underline">privacy@beeyahinnovatek.com</a> to make such a request.</p>
+
+                <h2>5. Contact Us</h2>
+                <p>If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:privacy@beeyahinnovatek.com" class="text-accent hover:underline">privacy@beeyahinnovatek.com</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================= -->
+    <!-- ===   TERMS OF USE PAGE (NEW)       === -->
+    <!-- ======================================= -->
+    <main id="page-terms" class="hidden">
+        <!-- 1. Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Terms of <span class="text-accent">Use</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Please read these terms and conditions carefully before using our website.
+                </p>
+            </div>
+        </section>
+        
+        <!-- 2. Legal Text Content -->
+        <section class="py-20">
+            <div class="prose prose-lg max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-700">
+                <p class="text-gray-500">Last Updated: November 11, 2025</p>
+                
+                <h2>1. Agreement to Terms</h2>
+                <p>By using this website, you agree to be bound by these Terms of Use. If you do not agree with all of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
+
+                <h2>2. Intellectual Property Rights</h2>
+                <p>Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the “Content”) and the trademarks, service marks, and logos contained therein (the “Marks”) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.</p>
+
+                <h2>3. User Representations</h2>
+                <p>By using the Site, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms of Use; (4) you will not use the Site for any illegal or unauthorized purpose.</p>
+                
+                <h2>4. Governing Law</h2>
+                <p>These Terms of Use and your use of the Site are governed by and construed in accordance with the laws of the Federal Republic of Nigeria, without regard to its conflict of law principles.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================= -->
+    <!-- ===    SUPPORT PAGE CONTENT (NEW)   === -->
+    <!-- ======================================= -->
+    <main id="page-support" class="hidden">
+        <!-- 1. Hero Section -->
+        <section class="py-24 bg-gray-50 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="font-heading text-5xl sm:text-6xl font-bold mb-4 text-primary leading-tight">
+                    How Can We <span class="text-accent">Help?</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Have a question? Check our FAQs or send our support team a message.
+                </p>
+            </div>
+        </section>
+        
+        <!-- 2. FAQ and Contact Form -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-16">
+                
+                <!-- FAQ Column -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl font-heading font-bold text-primary mb-8">
+                        Frequently Asked Questions
+                    </h2>
+                    <div class="space-y-4">
+                        <!-- FAQ 1 -->
+                        <details class="border-b pb-4">
+                            <summary class="flex justify-between items-center font-semibold text-lg text-primary">
+                                What services does Beeyah InnovaTek offer?
+                                <span class="accordion-arrow transition-transform duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </span>
+                            </summary>
+                            <p class="mt-2 text-gray-600">We specialize in three core areas: Web & App Development, Branding & Design Systems, and Cloud/DevOps Solutions. You can learn more on our <a href="#" id="support-nav-services" class="text-accent hover:underline">Services page</a>.</p>
+                        </details>
+                        <!-- FAQ 2 -->
+                        <details class="border-b pb-4">
+                            <summary class="flex justify-between items-center font-semibold text-lg text-primary">
+                                How do I start a project with you?
+                                <span class="accordion-arrow transition-transform duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </span>
+                            </summary>
+                            <p class="mt-2 text-gray-600">The best way to start is by filling out our main <a href="#" id="support-nav-contact" class="text-accent hover:underline">Contact Form</a> with details about your project. Our team will review it and get back to you within one business day.</p>
+                        </details>
+                        <!-- FAQ 3 -->
+                        <details class="border-b pb-4">
+                            <summary class="flex justify-between items-center font-semibold text-lg text-primary">
+                                Where are you located?
+                                <span class="accordion-arrow transition-transform duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </span>
+                            </summary>
+                            <p class="mt-2 text-gray-600">We are a globally distributed team with main offices in Lagos, Nigeria, and Dallas, USA.</p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Contact Support Form Column -->
+                <div>
+                    <h2 class="text-3xl font-heading font-bold text-primary mb-8">
+                        Contact <span class="text-accent">Support</span>
+                    </h2>
+                    <form id="supportForm" class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-accent">
+                        <div class="mb-4">
+                            <label for="supportName" class="block text-sm font-medium text-primary mb-2">Full Name*</label>
+                            <input type="text" id="supportName" name="supportName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent">
+                        </div>
+                        <div class="mb-4">
+                            <label for="supportEmail" class="block text-sm font-medium text-primary mb-2">Email*</label>
+                            <input type="email" id="supportEmail" name="supportEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent">
+                        </div>
+                        <div class="mb-6">
+                            <label for="supportMessage" class="block text-sm font-medium text-primary mb-2">How can we help?*</label>
+                            <textarea id="supportMessage" name="supportMessage" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 font-semibold rounded-full bg-primary text-white shadow-xl hover:bg-opacity-90 transition duration-300">
+                            Send Ticket
+                        </button>
+                        <div id="supportFormStatus" class="mt-4 p-4 text-center rounded-lg hidden" role="status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- =================================== -->
+    <!-- ===   FOOTER (SHARED)           === -->
+    <!-- =================================== -->
+    <footer class="bg-primary pt-16 pb-8 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-10">
+            <!-- Branding -->
+            <div>
+                <!-- Revert to text-based logo for the footer for styling consistency -->
+                <h4 class="text-2xl font-bold font-heading text-white mb-4">
+                    <span class="text-accent">B</span>eeyah<span class="text-accent">Innovatek</span>
+                </h4>
+                <p class="text-sm">Smart. Sustainable. Tech-driven.</p>
+                <p class="text-sm mt-2">© 2025 Beeyah InnovaTek. All rights reserved.</p>
+            </div>
+            <!-- Quick Links (Styled as buttons) -->
+            <div>
+                <h5 class="text-lg font-heading font-semibold text-white mb-4">Quick Links</h5>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" id="footer-nav-about-us" class="flex items-center justify-center text-center w-full px-4 py-2 rounded-full border border-gray-600 text-gray-300 hover:bg-accent hover:border-accent hover:text-white transition duration-200">About Us</a></li>
+                    <li><a href="#" id="footer-nav-services" class="flex items-center justify-center text-center w-full px-4 py-2 rounded-full border border-gray-600 text-gray-300 hover:bg-accent hover:border-accent hover:text-white transition duration-200">Our Services</a></li>
+                    <li><a href="#" id="footer-nav-portfolio" class="flex items-center justify-center text-center w-full px-4 py-2 rounded-full border border-gray-600 text-gray-300 hover:bg-accent hover:border-accent hover:text-white transition duration-200">Portfolio</a></li>
+                    <li><a href="#" id="footer-nav-blog" class="flex items-center justify-center text-center w-full px-4 py-2 rounded-full border border-gray-600 text-gray-300 hover:bg-accent hover:border-accent hover:text-white transition duration-200">Blog / Insights</a></li>
+                </ul>
+            </div>
+            <!-- Legal & Resources -->
+            <div>
+                <h5 class="text-lg font-heading font-semibold text-white mb-4">Resources</h5>
+                <ul class="space-y-2 text-sm">
+                    <!-- Footer links updated with IDs for JS navigation -->
+                    <li><a href="#" id="footer-nav-careers" class="hover:text-accent transition duration-200">Careers</a></li>
+                    <li><a href="#" id="footer-nav-privacy" class="hover:text-accent transition duration-200">Privacy Policy</a></li>
+                    <li><a href="#" id="footer-nav-terms" class="hover:text-accent transition duration-200">Terms of Use</a></li>
+                    <li><a href="#" id="footer-nav-support" class="hover:text-accent transition duration-200">Support</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info & Social -->
+            <div>
+                <h5 class="text-lg font-heading font-semibold text-white mb-4">Get In Touch</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="mailto:info@beeyahinnovatek.com" class="hover:text-accent transition duration-200">info@beeyahinnovatek.com</a></li>
+                    <li><p>Lagos, Nigeria | Dallas, USA</p></li>
+                </ul>
+                <!-- Social Icons Placeholder -->
+                <div class="flex space-x-4 mt-4 text-white">
+                    <!-- Icon: Twitter -->
+                    <a href="https://x.com/beeyahinnovatek" class="hover:text-accent transition duration-200" title="Beeyah InnovaTek on X" aria-label="Beeyah InnovaTek on X (opens in a new tab)" target="_blank" rel="noopener noreferrer">
+                        <span class="sr-only">Beeyah InnovaTek on X (opens in a new tab)</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.5 14-19 8 5-.4 9-2 11-5v-1c-3 1.5-6.5 1.5-9 0 2-2 4-5.5 4-8s-2-6-4-8c3 1.5 6 2 9 0z"></path></svg>
+                    </a>
+                    <!-- Icon: LinkedIn -->
+                    <a href="https://www.linkedin.com/in/beeyah-innovatek-707557378" class="hover:text-accent transition duration-200" title="Beeyah InnovaTek on LinkedIn" aria-label="Beeyah InnovaTek on LinkedIn (opens in a new tab)" target="_blank" rel="noopener noreferrer"><span class="sr-only">Beeyah InnovaTek on LinkedIn (opens in a new tab)</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 0-6 6v7h-4v-7a6 6 0 0 1 6-6h.05z"></path><circle cx="8" cy="8" r="2"></circle><rect x="2" y="11" width="4" height="11"></rect></svg></a>
+                    <!-- Icon: Instagram -->
+                    <a href="https://www.instagram.com/beeyahinnovatek" class="hover:text-accent transition duration-200" title="Beeyah InnovaTek on Instagram" aria-label="Beeyah InnovaTek on Instagram (opens in a new tab)" target="_blank" rel="noopener noreferrer"><span class="sr-only">Beeyah InnovaTek on Instagram (opens in a new tab)</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================== -->
+    <!-- ===   GLOBAL SCRIPT             === -->
+    <!-- =================================== -->
+    <script>
+        // --- PAGE NAVIGATION LOGIC ---
+        
+        const pageHome = document.getElementById('page-home');
+        const pagePortfolio = document.getElementById('page-portfolio');
+        const pageServices = document.getElementById('page-services');
+        const pageAboutUs = document.getElementById('page-about-us');
+        const pageBlog = document.getElementById('page-blog');
+        const pageCareers = document.getElementById('page-careers'); // NEW
+        const pagePrivacy = document.getElementById('page-privacy'); // NEW
+        const pageTerms = document.getElementById('page-terms'); // NEW
+        const pageSupport = document.getElementById('page-support'); // NEW
+
+        const desktopNav = document.getElementById('desktop-nav');
+        const navLinks = desktopNav.querySelectorAll('a');
+
+        // All links that navigate to the Portfolio page
+        const portfolioLinks = [
+            document.getElementById('nav-portfolio'),
+            document.getElementById('nav-portfolio-hero'),
+            document.getElementById('nav-portfolio-cta'),
+            document.getElementById('footer-nav-portfolio'),
+            document.getElementById('mobile-nav-portfolio'),
+        ];
+        
+        // All links that navigate to the Services page
+        const servicesLinks = [
+            document.getElementById('nav-services'),
+            document.getElementById('footer-nav-services'),
+            document.getElementById('nav-services-explore-1'),
+            document.getElementById('nav-services-explore-2'),
+            document.getElementById('nav-services-explore-3'),
+            document.getElementById('mobile-nav-services'),
+            document.getElementById('support-nav-services'), // NEW
+        ];
+
+        // All links that navigate to the About Us page
+        const aboutUsLinks = [
+            document.getElementById('nav-about-us'),
+            document.getElementById('home-about-learn-more'),
+            document.getElementById('footer-nav-about-us'),
+            document.getElementById('mobile-nav-about-us'),
+        ];
+
+        // All links that navigate to the Blog page
+        const blogLinks = [
+            document.getElementById('nav-blog'),
+            document.getElementById('home-insight-read-more'),
+            document.getElementById('footer-nav-blog'),
+            document.getElementById('mobile-nav-blog'),
+        ];
+
+        // All links that navigate to the Home page (or sections within it)
+        const homeLinks = [
+            { el: document.getElementById('nav-home-logo'), section: 'body' },
+            { el: document.getElementById('nav-contact'), section: '#contact-section' },
+            { el: document.getElementById('nav-contact-portfolio'), section: '#contact-section' },
+            { el: document.getElementById('nav-contact-services'), section: '#contact-section' },
+            { el: document.getElementById('mobile-nav-contact'), section: '#contact-section' },
+            { el: document.getElementById('support-nav-contact'), section: '#contact-section' }, // NEW
+        ];
+
+        // All links that navigate to the Careers page (NEW)
+        const careersLinks = [
+            document.getElementById('footer-nav-careers'),
+            document.getElementById('about-cta-careers')
+        ];
+        
+        // All links that navigate to the Privacy page (NEW)
+        const privacyLinks = [
+            document.getElementById('footer-nav-privacy')
+        ];
+        
+        // All links that navigate to the Terms page (NEW)
+        const termsLinks = [
+            document.getElementById('footer-nav-terms')
+        ];
+        
+        // All links that navigate to the Support page (NEW)
+        const supportLinks = [
+            document.getElementById('footer-nav-support')
+        ];
+        
+        /**
+         * Updates the active state of the main navigation links.
+         * @param {string} activeId - The ID of the link to make active.
+         */
+        function updateActiveNav(activeId = '') {
+            navLinks.forEach(link => {
+                link.classList.remove('nav-link-active');
+            });
+            if (activeId) {
+                const activeLink = document.getElementById(activeId);
+                if (activeLink) {
+                    activeLink.classList.add('nav-link-active');
+                }
+            }
+        }
+
+        /**
+         * Shows the specified page and hides the other.
+         * @param {string} pageToShow - 'home', 'portfolio', 'services', 'about', 'blog', 'careers', 'privacy', 'terms', 'support'.
+         */
+        function showPage(pageToShow) {
+            // Hide all pages first
+            pageHome.classList.add('hidden');
+            pagePortfolio.classList.add('hidden');
+            pageServices.classList.add('hidden');
+            pageAboutUs.classList.add('hidden');
+            pageBlog.classList.add('hidden');
+            pageCareers.classList.add('hidden'); // NEW
+            pagePrivacy.classList.add('hidden'); // NEW
+            pageTerms.classList.add('hidden'); // NEW
+            pageSupport.classList.add('hidden'); // NEW
+            
+            if (pageToShow === 'portfolio') {
+                pagePortfolio.classList.remove('hidden');
+                updateActiveNav('nav-portfolio');
+            } else if (pageToShow === 'services') {
+                pageServices.classList.remove('hidden');
+                updateActiveNav('nav-services');
+            } else if (pageToShow === 'about') {
+                pageAboutUs.classList.remove('hidden');
+                updateActiveNav('nav-about-us');
+            } else if (pageToShow === 'blog') {
+                pageBlog.classList.remove('hidden');
+                updateActiveNav('nav-blog');
+            } else if (pageToShow === 'careers') { // NEW
+                pageCareers.classList.remove('hidden');
+                updateActiveNav(); // No main nav link
+            } else if (pageToShow === 'privacy') { // NEW
+                pagePrivacy.classList.remove('hidden');
+                updateActiveNav(); // No main nav link
+            } else if (pageToShow === 'terms') { // NEW
+                pageTerms.classList.remove('hidden');
+                updateActiveNav(); // No main nav link
+            } else if (pageToShow === 'support') { // NEW
+                pageSupport.classList.remove('hidden');
+                updateActiveNav(); // No main nav link
+            } else {
+                pageHome.classList.remove('hidden');
+                // Clear active nav for home, as it could be a section link
+                updateActiveNav(); 
+            }
+            
+            window.scrollTo(0, 0); // Scroll to top on page change
+        }
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenuOverlay.classList.remove('hidden');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenuOverlay.classList.add('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+
+        // --- Add Listeners & Integrate Mobile Menu Close ---
+
+        // Add event listeners for Portfolio links
+        portfolioLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('portfolio');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Services links
+        servicesLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('services');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for About Us links
+        aboutUsLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('about');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Blog links
+        blogLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('blog');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Home links (with section scrolling)
+        homeLinks.forEach(item => {
+            if (!item.el) return; // Guard clause
+            item.el.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('home'); // Show home page first
+                closeMobileMenu(); // Close menu on nav
+                
+                // Then scroll to the specific section
+                setTimeout(() => { // Use a slight delay to ensure page is visible before scrolling
+                    if (item.section === 'body') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        const sectionEl = document.querySelector(item.section);
+                        if (sectionEl) {
+                            sectionEl.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                }, 0);
+
+                // Update active nav state for section links
+                if (item.el.id && item.el.id.startsWith('nav-')) {
+                     updateActiveNav(item.el.id);
+                }
+            });
+        });
+
+        // Add event listeners for Careers links (NEW)
+        careersLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('careers');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Privacy links (NEW)
+        privacyLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('privacy');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Terms links (NEW)
+        termsLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('terms');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+        // Add event listeners for Support links (NEW)
+        supportLinks.forEach(link => {
+            if (!link) return; // Guard clause
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('support');
+                closeMobileMenu(); // Close menu on nav
+            });
+        });
+
+
+        // --- PORTFOLIO FILTERING LOGIC ---
+        const portfolioFilters = document.getElementById('portfolio-filters');
+        const portfolioGrid = document.getElementById('portfolio-grid');
+        
+        if (portfolioFilters && portfolioGrid) {
+            const filterButtons = portfolioFilters.querySelectorAll('button');
+            const portfolioItems = portfolioGrid.querySelectorAll('[data-category]');
+
+            portfolioFilters.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'BUTTON') return;
+
+                const filterValue = e.target.dataset.filter;
+                
+                // Update button styles
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('filter-btn-active', 'bg-accent', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-primary');
+                });
+                e.target.classList.add('filter-btn-active', 'bg-accent', 'text-white');
+                e.target.classList.remove('bg-gray-100', 'text-primary');
+
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        }
+        
+        // --- BLOG FILTERING LOGIC ---
+        const blogFilters = document.getElementById('blog-filters');
+        const blogGrid = document.getElementById('blog-grid');
+        
+        if (blogFilters && blogGrid) {
+            const filterButtons = blogFilters.querySelectorAll('button');
+            const blogItems = blogGrid.querySelectorAll('[data-category]');
+
+            blogFilters.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'BUTTON') return;
+
+                const filterValue = e.target.dataset.filter;
+                
+                // Update button styles
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('filter-btn-active', 'bg-accent', 'text-white');
+                    btn.classList.add('bg-gray-100', 'text-primary');
+                });
+                e.target.classList.add('filter-btn-active', 'bg-accent', 'text-white');
+                e.target.classList.remove('bg-gray-100', 'text-primary');
+
+                // Filter blog items
+                blogItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+
+        // --- FORM SUBMISSION LOGIC ---
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const supportForm = document.getElementById('supportForm'); // New form
+        const formStatus = document.getElementById('formStatus');
+        const newsletterStatus = document.getElementById('newsletterStatus');
+        const supportFormStatus = document.getElementById('supportFormStatus'); // New status
+
+        /**
+         * Generic function to display a status message for a form.
+         * @param {HTMLElement} statusElement - The element to display the message in.
+         * @param {string} message - The text message.
+         * @param {boolean} isSuccess - Whether the operation was successful.
+         */
+        function showStatus(statusElement, message, isSuccess) {
+            if (!statusElement) return; // Guard clause
+            statusElement.textContent = message;
+            statusElement.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            
+            if (isSuccess) {
+                statusElement.classList.add('bg-green-100', 'text-green-700');
+            } else {
+                statusElement.classList.add('bg-red-100', 'text-red-700');
+            }
+            
+            // Hide the status message after 5 seconds
+            setTimeout(() => {
+                statusElement.classList.add('hidden');
+            }, 5000);
+        }
+
+        // 1. Contact Form Submission Handler
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                formStatus.classList.add('hidden'); // Hide any previous status
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Simulating API call delay
+                const submitButton = document.getElementById('submitButton');
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    // In a real application, you would send formData to a server endpoint here.
+                    
+                    console.log('Contact form submitted:', formData);
+                    
+                    // Success feedback
+                    showStatus(formStatus, 'Thank you! Your inquiry has been sent successfully. We will be in touch soon.', true);
+                    contactForm.reset();
+                    
+                    submitButton.textContent = 'Send My Inquiry';
+                    submitButton.disabled = false;
+                }, 1500); // 1.5 second delay
+            });
+        }
+
+        // 2. Newsletter Form Submission Handler (Homepage)
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                newsletterStatus.classList.add('hidden');
+
+                if (!newsletterStatus) return; // Guard clause in case element is missing
+                
+                const email = document.getElementById('newsletterEmail').value;
+
+                // Simulating API call delay
+                const submitButton = newsletterForm.querySelector('button[type="submit"]');
+                submitButton.textContent = 'Subscribing...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    // In a real application, you would send the email to your newsletter service here.
+                    console.log('Newsletter submitted:', email);
+                    
+                    // Success feedback
+                    showStatus(newsletterStatus, 'Success! You are now subscribed to Beeyah InnovaTek updates.', true);
+                    newsletterForm.reset();
+                    
+                    submitButton.textContent = 'Subscribe';
+                    submitButton.disabled = false;
+                }, 1000); // 1 second delay
+            });
+        }
+        
+        // 3. Newsletter Form Submission Handler (Blog Page)
+        const newsletterFormBlog = document.getElementById('newsletterFormBlog');
+        const newsletterStatusBlog = document.getElementById('newsletterStatusBlog');
+        
+        if (newsletterFormBlog) {
+            newsletterFormBlog.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!newsletterStatusBlog) return; // Guard clause
+                newsletterStatusBlog.classList.add('hidden');
+                
+                const email = document.getElementById('newsletterEmailBlog').value;
+
+                // Simulating API call delay
+                const submitButton = newsletterFormBlog.querySelector('button[type="submit"]');
+                submitButton.textContent = 'Subscribing...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    console.log('Newsletter (Blog) submitted:', email);
+                    
+                    // Use the showStatus function, targeting the blog's status element
+                    showStatus(newsletterStatusBlog, 'Success! You are now subscribed to Beeyah InnovaTek updates.', true);
+                    newsletterFormBlog.reset();
+                    
+                    submitButton.textContent = 'Subscribe';
+                    submitButton.disabled = false;
+                }, 1000); // 1 second delay
+            });
+        }
+
+        // 4. Support Form Submission Handler (NEW)
+        if (supportForm) {
+            supportForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!supportFormStatus) return; // Guard clause
+                supportFormStatus.classList.add('hidden');
+                
+                const formData = {
+                    name: document.getElementById('supportName').value,
+                    email: document.getElementById('supportEmail').value,
+                    message: document.getElementById('supportMessage').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Simulating API call delay
+                const submitButton = supportForm.querySelector('button[type="submit"]');
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    console.log('Support form submitted:', formData);
+                    
+                    // Success feedback
+                    showStatus(supportFormStatus, 'Thank you! Your support ticket has been received.', true);
+                    supportForm.reset();
+                    
+                    submitButton.textContent = 'Send Ticket';
+                    submitButton.disabled = false;
+                }, 1000); // 1 second delay
+            });
+        }
+    </script>
+</body>
+</html>
